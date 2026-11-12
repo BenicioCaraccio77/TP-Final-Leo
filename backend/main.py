@@ -1,9 +1,19 @@
 from fastapi import FastAPI, HTTPException
 from config.supabase import supabase
 from pydantic import BaseModel
-from typing import List
+from typing import List 
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 class ProductoCarrito(BaseModel):
     producto_id: int
@@ -37,7 +47,6 @@ def obtener_producto(producto_id: int):
 
 @app.post("/checkout")
 def realizar_compra(compra: Compra):
-
     total = 0
     productos_comprados = []
 
