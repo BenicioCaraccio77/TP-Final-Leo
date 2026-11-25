@@ -23,6 +23,7 @@ class ProductoCarrito(BaseModel):
 class Compra(BaseModel):
     comprador: str
     email: str
+    direccion: str
     productos: List[ProductoCarrito]
 
 @app.get("/")
@@ -76,6 +77,7 @@ def realizar_compra(compra: Compra):
     nueva_orden = {
         "comprador": compra.comprador,
         "email": compra.email,
+        "direccion": compra.direccion,
         "total": total
     }
 

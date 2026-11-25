@@ -10,13 +10,14 @@ export default function Carrito() {
 
     const [comprador, setComprador] = useState("")
     const [email, setEmail] = useState("")
+    const [direccion, setDireccion] = useState("")
     const [metodoPago, setMetodoPago] = useState("")
     const [procesando, setProcesando] = useState(false)
     const [mostrarModal, setMostrarModal] = useState(false)
     const [numeroOrden, setNumeroOrden] = useState("")
 
     async function confirmarCompra() {
-        if (!comprador || !email || !metodoPago) {
+        if (!comprador || !email || !direccion || !metodoPago) {
             alert("Completá todos los campos")
             return
         }
@@ -39,7 +40,7 @@ export default function Carrito() {
             const respuesta = await fetch("https://tienda-padel-backend-gv02.onrender.com/checkout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ comprador, email, productos })
+                body: JSON.stringify({ comprador, email, direccion, productos })
             })
 
             const datos = await respuesta.json()
@@ -93,6 +94,7 @@ export default function Carrito() {
 
                             <TextInput style={estilos.input} placeholder="Nombre completo" value={comprador} onChangeText={setComprador} />
                             <TextInput style={estilos.input} placeholder="Correo electrónico" value={email} onChangeText={setEmail} keyboardType="email-address" autoCapitalize="none" />
+                            <TextInput style={estilos.input}  placeholder="Dirección completa" value={direccion} onChangeText={setDireccion} />
 
                             <Text style={estilos.subtitulo}>Pago simulado</Text>
                             <TextInput style={estilos.input} placeholder="Tarjeta o transferencia" value={metodoPago} onChangeText={setMetodoPago} />
