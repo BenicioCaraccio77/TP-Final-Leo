@@ -15,13 +15,11 @@ const estilos = StyleSheet.create({
         padding: 20,
         paddingTop: 35
     },
-
     titulo: {
         color: "white",
         fontSize: 26,
         fontWeight: "bold"
     },
-
     subtitulo: {
         color: "#d5e2ee",
         fontSize: 14,

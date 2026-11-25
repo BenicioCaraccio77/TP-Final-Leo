@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from config.supabase import supabase
 from pydantic import BaseModel
 from typing import List 
@@ -13,7 +14,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 class ProductoCarrito(BaseModel):
     producto_id: int
