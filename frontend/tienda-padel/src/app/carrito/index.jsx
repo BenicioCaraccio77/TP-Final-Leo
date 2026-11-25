@@ -36,7 +36,7 @@ export default function Carrito() {
         setProcesando(true)
 
         try {
-            const respuesta = await fetch("http://192.168.100.5:8000/checkout", {
+            const respuesta = await fetch("https://tienda-padel-backend-gv02.onrender.com/checkout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ comprador, email, productos })

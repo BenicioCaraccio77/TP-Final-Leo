@@ -16,7 +16,7 @@ export default function Inicio() {
     const { cantidad } = useCarrito()
 
     useEffect(() => {
-        fetch("http://192.168.100.5:8000/productos")
+        fetch("https://tienda-padel-backend-gv02.onrender.com/productos")
             .then(respuesta => respuesta.json())
             .then(datos => setProductos(datos))
             .catch(error => console.log(error))
